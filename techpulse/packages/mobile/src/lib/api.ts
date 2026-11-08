@@ -4,7 +4,15 @@ import type { DailyDigest, NewsArticle, NewsPage, SourceInfo } from "@shared";
 
 // On a real phone "localhost" is the phone itself, so reuse the IP of the PC running the Expo dev server.
 export function defaultServerUrl(): string {
-  if (Platform.OS === "web") return "http://localhost:4000";
+  // On a hosted build (Netlify), use same-origin API routes.
+  const envOverride = (process.env.EXPO_PUBLIC_WISH_API ?? "").trim();
+  if (envOverride) return envOverride;
+  if (Platform.OS === "web") {
+    if (typeof window !== "undefined" && window.location?.hostname && window.location.hostname !== "localhost") {
+      return window.location.origin;
+    }
+    return "http://localhost:4000";
+  }
   const host = Constants.expoConfig?.hostUri?.split(":")[0];
   if (host) return `http://${host}:4000`;
   return Platform.OS === "android" ? "http://10.0.2.2:4000" : "http://localhost:4000";
