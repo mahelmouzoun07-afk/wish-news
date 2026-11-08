@@ -1,0 +1,34 @@
+{
+  "name": "techpulse-desktop",
+  "productName": "TechPulse",
+  "version": "1.0.0",
+  "description": "TechPulse - actus IA, tech, fintech et startups en temps réel",
+  "author": "TechPulse",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "build:web": "cd ../mobile && npx expo export --platform web --output-dir ../desktop/app",
+    "build:backend": "tsc -p ../backend/tsconfig.json --outDir backend-dist",
+    "build": "npm run build:web && npm run build:backend",
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "dist": "npm run build && electron-builder --win"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0",
+    "typescript": "^5.6.0"
+  },
+  "build": {
+    "appId": "com.techpulse.app",
+    "productName": "TechPulse",
+    "files": ["main.js", "app/**/*", "backend-dist/**/*"],
+    "win": { "target": "nsis" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}

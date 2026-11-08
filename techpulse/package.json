@@ -1,0 +1,11 @@
+{
+  "name": "techpulse",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "backend": "npm --prefix packages/backend start",
+    "mobile": "npm --prefix packages/mobile start",
+    "desktop": "npm --prefix packages/desktop start",
+    "desktop:build": "npm --prefix packages/desktop run dist"
+  }
+}

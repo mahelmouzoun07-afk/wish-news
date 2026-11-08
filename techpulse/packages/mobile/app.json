@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "TechPulse",
+    "slug": "techpulse",
+    "version": "1.0.0",
+    "scheme": "techpulse",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.techpulse.app"
+    },
+    "android": {
+      "package": "com.techpulse.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B1020",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "usesCleartextTraffic": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": ["expo-router", "expo-notifications"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
